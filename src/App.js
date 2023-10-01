@@ -20,6 +20,7 @@ function App() {
 	const [isLoading, setIsLoading] = useState(true)
 	const [success, setSuccess] = useState(false)
 	const [isModal, setIsModal] = useState(false)
+	const [fileLoaded, setFileLoaded] = useState(false)
 	const [searchValue, setSearchValue] = useState('')
 
 	// {
@@ -113,6 +114,19 @@ function App() {
 			alert('Ошибка при добавлении пользователя')
 		}
 	}
+	// Загрузка аватарки
+	const handleFileChange = (e) => {
+		const file = e.target.files[0];
+		if (file) {
+			const imageUrl = URL.createObjectURL(file);
+			setUserData({
+				...userData,
+				avatar: imageUrl,
+			});
+			setFileLoaded(true)
+		}
+	};
+	
 
 	return (
 		<div className='App'>
@@ -135,6 +149,8 @@ function App() {
 					invites={invites}
 					onClickInvite={onClickInvite}
 					handleAddUser={handleAddUser}
+					handleFileChange={handleFileChange}
+					fileLoaded={fileLoaded}
 				/>
 			)}
 		</div>

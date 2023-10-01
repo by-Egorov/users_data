@@ -1,5 +1,5 @@
 import React from 'react'
-const Modal = ({ handleAddUser, userData, handleInputChange }) => {
+const Modal = ({ handleAddUser, userData, handleInputChange, handleFileChange, fileLoaded }) => {
 	return (
 		<div className='add_user-block'>
 			<input
@@ -23,17 +23,18 @@ const Modal = ({ handleAddUser, userData, handleInputChange }) => {
 				onChange={handleInputChange}
 				placeholder='Email'
 			/>
-			{/* <div className='file-upload'>
+			<div className='file-upload'>
 				<label>
 					<input 
 					type='file' 
 					name='avatar'
-					onChange={(e) => handleFileChange(e)}
-					accept='image/*' />
+					accept='image/*'
+					onChange={handleFileChange} />
 					<span>Загрузить аватарку</span>
 				</label>
-			</div> */}
-			<input type='text' id='filename' className='filename' disabled />
+			</div>
+			{fileLoaded && <span>Аватарка успешно загружена!</span>}
+		
 			<button onClick={handleAddUser} className='send-add-btn'>
 				Добавить
 			</button>

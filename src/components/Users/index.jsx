@@ -16,6 +16,8 @@ export const Users = ({
 	handleInputChange,
 	isModal,
 	modalShow,
+	handleFileChange,
+	fileLoaded,
 }) => {
 	return (
 		<>
@@ -24,6 +26,8 @@ export const Users = ({
 					userData={userData}
 					handleInputChange={handleInputChange}
 					handleAddUser={handleAddUser}
+					handleFileChange={handleFileChange}
+					fileLoaded={fileLoaded}
 				/>
 			) : (
 				<div className='search'>
